@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="32"
+   id="svg2"
+   version="1.1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient6133">
+      <stop
+         id="stop6135"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:0.0483871" />
+      <stop
+         id="stop6137"
+         offset="1"
+         style="stop-color:#000000;stop-opacity:0" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5507">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.43548387"
+         offset="0"
+         id="stop5509" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1"
+         id="stop5511" />
+    </linearGradient>
+    <filter
+       id="filter3891"
+       color-interpolation-filters="sRGB"
+       x="-0.015945852"
+       y="-0.08271078"
+       width="1.0318917"
+       height="1.1467448">
+      <feGaussianBlur
+         id="feGaussianBlur3893"
+         stdDeviation="1"
+         result="result8" />
+      <feOffset
+         id="feOffset3895"
+         dx="0"
+         dy="-0.69999999999999996"
+         result="result11" />
+      <feComposite
+         id="feComposite3897"
+         in2="result11"
+         result="result6"
+         in="SourceGraphic"
+         operator="in" />
+      <feFlood
+         id="feFlood3899"
+         result="result10"
+         in="result6"
+         flood-opacity="0.64203233256351044"
+         flood-color="rgb(0,0,0)" />
+      <feBlend
+         id="feBlend3901"
+         in2="result10"
+         mode="normal"
+         in="result6"
+         result="result12" />
+      <feComposite
+         id="feComposite3903"
+         in2="SourceGraphic"
+         result="result2"
+         operator="atop" />
+    </filter>
+    <linearGradient
+       xlink:href="#linearGradient5507"
+       id="linearGradient5513"
+       x1="-19.25"
+       y1="912.86218"
+       x2="-19.25"
+       y2="867.11218"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2500063,-3.2500916)" />
+    <linearGradient
+       xlink:href="#linearGradient5507-8"
+       id="linearGradient5513-0"
+       x1="-19.25"
+       y1="912.86218"
+       x2="-19.25"
+       y2="867.11218"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(67.25,48.49991)" />
+    <linearGradient
+       id="linearGradient5507-8">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.43548387"
+         offset="0"
+         id="stop5509-9" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1"
+         id="stop5511-0" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient5507-8"
+       id="linearGradient5807"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(67.375001,8.3125005)"
+       x1="-19.25"
+       y1="952.63556"
+       x2="-19.25"
+       y2="867.11218" />
+    <linearGradient
+       xlink:href="#linearGradient6133"
+       id="linearGradient6131"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(67.375001,8.3125005)"
+       x1="-19.250002"
+       y1="906.86218"
+       x2="-19.250002"
+       y2="876.86218" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(0,-924.3622)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,-27.6598,766.26866)"><flowRegion
+         id="flowRegion3969-0-5-4"><rect
+           id="rect3971-5-9-3"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5">0</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,-12.194399,766.26596)"><flowRegion
+         id="flowRegion3969-0-5-4-6"><rect
+           id="rect3971-5-9-3-4"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-1">1</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-28"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,68.162004,766.25966)"><flowRegion
+         id="flowRegion3969-0-5-4-8"><rect
+           id="rect3971-5-9-3-9"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-2">6</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-8"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,52.162002,766.30286)"><flowRegion
+         id="flowRegion3969-0-5-4-88"><rect
+           id="rect3971-5-9-3-6"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-8">5</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-28-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,116.69659,766.27766)"><flowRegion
+         id="flowRegion3969-0-5-4-8-8"><rect
+           id="rect3971-5-9-3-9-9"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-2-0">9</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-8-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,100.16199,766.26866)"><flowRegion
+         id="flowRegion3969-0-5-4-88-8"><rect
+           id="rect3971-5-9-3-6-7"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-8-9">8</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,4.680401,766.25786)"><flowRegion
+         id="flowRegion3969-0-5-4-3"><rect
+           id="rect3971-5-9-3-33"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-7">2</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-2-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,37.215003,766.25516)"><flowRegion
+         id="flowRegion3969-0-5-4-6-2"><rect
+           id="rect3971-5-9-3-4-6"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-1-5">4</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-28-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78617347,0,0,0.78616805,148.32376,766.30653)"><flowRegion
+         id="flowRegion3969-0-5-4-8-6"><rect
+           id="rect3971-5-9-3-9-5"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60621071px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6062px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-2-8">+</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,21.0044,766.29296)"><flowRegion
+         id="flowRegion3969-0-5-4-1"><rect
+           id="rect3971-5-9-3-0"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-4">3</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-2-87"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,85.053,766.28846)"><flowRegion
+         id="flowRegion3969-0-5-4-6-08"><rect
+           id="rect3971-5-9-3-4-62"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-1-4">7</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-28-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,163.9838,766.50896)"><flowRegion
+         id="flowRegion3969-0-5-4-8-9"><rect
+           id="rect3971-5-9-3-9-3"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-2-9">:</flowPara></flowRoot>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3967-04-1-9-8-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:none"
+       transform="matrix(0.78616705,0,0,0.78616805,132.3402,766.43066)"><flowRegion
+         id="flowRegion3969-0-5-4-88-83"><rect
+           id="rect3971-5-9-3-6-0"
+           width="344.44077"
+           height="37.566002"
+           x="36.605247"
+           y="200.85538"
+           style="font-size:20.60629463px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ececec;font-family:Cagliostro;-inkscape-font-specification:Cagliostro" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.6063px;line-height:125%;font-family:Cagliostro;-inkscape-font-specification:Cagliostro;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ececec"
+         id="flowPara3094-8-5-8-1">-</flowPara></flowRoot>
+    <path
+       style="fill:none;stroke:#f2f2f2;stroke-width:1.96466;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4048"
+       d="m 124.11063,30.955916 c 1.52563,-0.02872 2.02468,7.417314 3.25448,8.363957 1.22981,0.946643 8.79235,-0.708328 9.23916,0.772029 0.4468,1.480356 -6.671,4.369931 -7.16727,5.832292 -0.49627,1.462361 3.79636,7.804409 2.545,8.735238 -1.25136,0.93083 -6.3485,-4.533239 -7.88128,-4.561329 -1.53278,-0.02809 -6.80698,5.940853 -8.03664,4.991286 -1.22965,-0.949567 2.28347,-7.804085 1.80112,-9.282012 -0.48236,-1.477927 -7.13035,-4.243446 -6.69807,-5.706782 0.43228,-1.463335 8.0252,-0.127934 9.28097,-1.035582 1.25577,-0.907648 2.1369,-8.080379 3.66253,-8.109097 z"
+       transform="matrix(0.43649295,0,0,0.45885368,159.92477,913.06123)" />
+    <path
+       style="fill:#f2f2f2;fill-opacity:1;stroke:#f2f2f2;stroke-width:0.699371;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4048-4"
+       d="m 124.11063,30.955916 c 0.89743,-0.01689 2.53107,7.807108 3.25448,8.363957 0.72342,0.556849 8.97633,-0.09877 9.23916,0.772029 0.26282,0.870798 -6.87535,4.97208 -7.16727,5.832292 -0.29192,0.860212 3.2811,8.187691 2.545,8.735238 -0.73609,0.547547 -6.97964,-4.544806 -7.88128,-4.561329 -0.90163,-0.01652 -7.31331,5.549855 -8.03664,4.991286 -0.72332,-0.558569 2.08486,-8.412643 1.80112,-9.282012 -0.28374,-0.869369 -6.95236,-4.845996 -6.69807,-5.706782 0.25428,-0.860785 8.54228,-0.501671 9.28097,-1.035582 0.73869,-0.53391 2.7651,-8.092204 3.66253,-8.109097 z"
+       transform="matrix(0.45855895,0,0,0.48281044,173.19111,912.04453)" />
+    <rect
+       style="fill-opacity:1;stroke:none"
+       id="rect3874"
+       width="10"
+       height="32"
+       x="280"
+       y="924.36218" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect3874"
+       id="use3876"
+       transform="translate(0,64)"
+       width="256"
+       height="128"
+       style="fill:#999999" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect3874"
+       id="use4015"
+       transform="translate(0,32)"
+       width="256"
+       height="128"
+       style="fill:#666666" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#rect3874"
+       id="use4017"
+       transform="translate(0,96)"
+       width="256"
+       height="128"
+       style="fill:#ececec" />
+    <circle
+       style="fill:none;stroke:#f2f2f2;stroke-width:1.41155;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3110"
+       cx="232"
+       cy="948.36218"
+       r="4.3344226" />
+    <circle
+       style="fill:#f2f2f2;fill-opacity:1;stroke:#f2f2f2;stroke-width:1.41155;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3110-5"
+       cx="248"
+       cy="948.36218"
+       r="4.3344226" />
+  </g>
+</svg>

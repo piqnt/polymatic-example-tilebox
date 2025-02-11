@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="32"
+   id="svg2"
+   version="1.1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient6133">
+      <stop
+         id="stop6135"
+         offset="0"
+         style="stop-color:#000000;stop-opacity:0.0483871" />
+      <stop
+         id="stop6137"
+         offset="1"
+         style="stop-color:#000000;stop-opacity:0" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5507">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.43548387"
+         offset="0"
+         id="stop5509" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1"
+         id="stop5511" />
+    </linearGradient>
+    <filter
+       id="filter3891"
+       color-interpolation-filters="sRGB"
+       x="-0.016637277"
+       y="-0.10333333"
+       width="1.0332746"
+       height="1.1833333">
+      <feGaussianBlur
+         id="feGaussianBlur3893"
+         stdDeviation="1"
+         result="result8" />
+      <feOffset
+         id="feOffset3895"
+         dx="0"
+         dy="-0.69999999999999996"
+         result="result11" />
+      <feComposite
+         id="feComposite3897"
+         in2="result11"
+         result="result6"
+         in="SourceGraphic"
+         operator="in" />
+      <feFlood
+         id="feFlood3899"
+         result="result10"
+         in="result6"
+         flood-opacity="0.64203233256351044"
+         flood-color="rgb(0,0,0)" />
+      <feBlend
+         id="feBlend3901"
+         in2="result10"
+         mode="normal"
+         in="result6"
+         result="result12" />
+      <feComposite
+         id="feComposite3903"
+         in2="SourceGraphic"
+         result="result2"
+         operator="atop" />
+    </filter>
+    <linearGradient
+       xlink:href="#linearGradient5507"
+       id="linearGradient5513"
+       x1="-19.25"
+       y1="912.86218"
+       x2="-19.25"
+       y2="867.11218"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(1.2500063,-3.2500916)" />
+    <linearGradient
+       xlink:href="#linearGradient5507-8"
+       id="linearGradient5513-0"
+       x1="-19.25"
+       y1="912.86218"
+       x2="-19.25"
+       y2="867.11218"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(67.25,48.49991)" />
+    <linearGradient
+       id="linearGradient5507-8">
+      <stop
+         style="stop-color:#000000;stop-opacity:0.43548387"
+         offset="0"
+         id="stop5509-9" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1"
+         id="stop5511-0" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient5507-8"
+       id="linearGradient5807"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(67.375001,8.3125005)"
+       x1="-19.25"
+       y1="952.63556"
+       x2="-19.25"
+       y2="867.11218" />
+    <linearGradient
+       xlink:href="#linearGradient6133"
+       id="linearGradient6131"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(67.375001,8.3125005)"
+       x1="-19.250002"
+       y1="906.86218"
+       x2="-19.250002"
+       y2="876.86218" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(0,-924.3622)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3866"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0.01%;font-family:Cagliostro;-inkscape-font-specification:'Cagliostro Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#999999;fill-opacity:1;stroke:none;filter:url(#filter3891)"
+       transform="matrix(0.75509443,0,0,0.75509443,-14.52419,875.32431)"><flowRegion
+         id="flowRegion3868"><rect
+           id="rect3870"
+           width="256.81555"
+           height="66.717209"
+           x="21.325134"
+           y="66.157112"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#999999;font-family:Cagliostro;-inkscape-font-specification:Cagliostro Bold;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara3872"
+         style="font-size:40px;line-height:1.25">Tile Box</flowPara></flowRoot>
+  </g>
+</svg>
