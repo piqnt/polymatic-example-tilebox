@@ -4,9 +4,10 @@
 import { nanoid } from "nanoid";
 
 import { COLORS } from "./Config";
+import { type Task } from "./Timeline";
 
 export const randomColor = () => {
-  return COLORS[Math.floor(Math.random() * 5)];
+  return COLORS[Math.floor(Math.random() * COLORS.length)];
 };
 
 export interface Index {
@@ -44,6 +45,7 @@ export class Board {
   tiles: Tile[] = [];
   cells: Cell[] = [];
   cellMap: Record<string, Cell> = {};
+  timeline: Task[] = [];
 }
 
 export const createBoard = (width: number, height: number) => {

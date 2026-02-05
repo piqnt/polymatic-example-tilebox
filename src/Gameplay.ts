@@ -18,8 +18,10 @@ import {
   slideBoard,
   isGameover,
 } from "./Model";
+import { clearTimeline, runTask, stepTimeline, timeoutTask } from "./Timeline";
+import { type FrameLoopEvent } from "./FrameLoop";
 
-import { clearTimeline, queueEvent } from "./Timeline";
+const DEBUG = false;
 
 export class Gameplay extends Middleware<MainContext> {
   constructor() {
@@ -28,56 +30,61 @@ export class Gameplay extends Middleware<MainContext> {
     this.on("user-start", this.startGame);
     this.on("main-start", this.startGame);
     this.on("user-slide", this.handleUserSlide);
+    this.on("frame-update", this.handleFrameUpdate);
   }
 
   handleActivate = () => {
     const board = createBoard(WIDTH, HEIGHT);
-
-    this.setContext((context) => {
-      context.board = board;
-    });
+    this.context.board = board;
   };
 
+  handleFrameUpdate = (e: FrameLoopEvent) => {
+    if (this.context.gameover) return;
+    stepTimeline(this.context.board, e.dt);
+
+    // console.log(this.context.nextTileTimeout, e.dt);
+
+    if (this.context.nextTileTimeout > 0) {
+      this.context.nextTileTimeout -= e.dt;
+      if (this.context.nextTileTimeout <= 0) {
+        this.handleNextTimeout();
+      }
+    }
+    if (!this.context.board.tiles.length && !this.context.board?.timeline?.length) {
+      this.addNewTile();
+    }
+  };
 
   startGame = () => {
     this.context.gameover = false;
     this.context.score = 0;
     this.context.inserted = 0;
+    this.context.nextTileTimeout = 400;
 
     clearTiles(this.context.board);
-    clearTimeline(this.context);
+    clearTimeline(this.context.board);
 
-    queueEvent(this.context, {
-      name: "start-game",
-      start: () => {
-        return 0;
-      },
-      finish: () => {
-        this.emit("game-start");
-        this.awaitUserMove();
-      },
-    });
+    this.emit("game-start");
   };
 
-  awaitUserMove = () => {
+  handleNextTimeout = () => {
+    DEBUG && console.log("handleNextTimeout");
+    this.addNewTile();
+  };
+
+  resetNextTileTimeout = () => {
     if (this.context.gameover) return;
-    queueEvent(this.context, {
-      name: "await-user",
-      start: () => {
-        return Math.max(NEXT_TILE_TIME - this.context.inserted, 200);
-      },
-      finish: () => {
-        this.addNewTile();
-      },
-    });
+    DEBUG && console.log("resetNextTileTimeout");
+    this.context.nextTileTimeout = Math.max(NEXT_TILE_TIME - this.context.inserted, 400);
+    DEBUG && console.log(this.context.nextTileTimeout);
   };
 
   checkGameover = () => {
+    DEBUG && console.log("checkGameover");
     if (this.context.gameover) return;
-    const gameover = isGameover(this.context.board);
-    if (!gameover) return;
+    if (!isGameover(this.context.board)) return;
     this.context.gameover = true;
-    clearTimeline(this.context);
+    clearTimeline(this.context.board);
     if (!this.context.maxScore || this.context.maxScore < this.context.score) {
       this.context.maxScore = this.context.score;
     }
@@ -85,68 +92,55 @@ export class Gameplay extends Middleware<MainContext> {
   };
 
   addNewTile = () => {
-    queueEvent(this.context, {
-      name: "new-tile",
-      start: () => {
-        if (this.context.gameover) return;
+    if (this.context.gameover) return;
+    DEBUG && console.log("addNewTile");
 
-        let tile: Tile;
-          const cell = randomEmptyCell(this.context.board);
-          if (!cell) return; // gameover
-          tile = new Tile(cell.position, randomColor());
+    const cell = randomEmptyCell(this.context.board);
+    if (!cell) return; // gameover
+    const tile = new Tile(cell.position, randomColor());
 
-        insertTile(this.context.board, tile);
-        this.context.inserted += 1;
+    insertTile(this.context.board, tile);
+    this.context.inserted += 1;
 
-        return 100;
-      },
-      finish: () => {
-        this.collectTiles();
-        this.checkGameover();
-        if (this.context.gameover) return;
-        this.awaitUserMove();
-      },
-    });
+    this.context.nextTileTimeout = -1;
+
+    runTask(this.context.board, [
+      timeoutTask(() => {}, 100, "new-tile-delay"), // new tile animation delay
+      timeoutTask(() => this.collectTiles(), 0, "new-tile-collect"),
+      timeoutTask(() => this.checkGameover(), 0, "new-tile-check"),
+      timeoutTask(() => this.resetNextTileTimeout(), 0, "new-tile-next"),
+    ]);
   };
 
   handleUserSlide = (direction: Index) => {
-    if (this.context.timeline[0]?.name !== "await-user") return;
+    if (this.context.board?.timeline?.length) return;
+
+    DEBUG && console.log("handleUserSlide");
 
     const moved = slideBoard(this.context.board, direction);
     if (!moved) return;
 
-    // clear await user
-    clearTimeline(this.context);
+    this.context.nextTileTimeout = -1;
 
-    queueEvent(this.context, {
-      name: "slide-board",
-      start: () => {
-        return 100;
-      },
-      finish: () => {
-        this.collectTiles();
-        this.addNewTile();
-      },
-    });
+    runTask(this.context.board, [
+      timeoutTask(() => {}, 100, "slide-delay"), // slide animation delay
+      timeoutTask(() => this.collectTiles(), 0, "slide-collect"),
+      timeoutTask(() => this.addNewTile(), 0, "slide-add"),
+    ]);
   };
 
   collectTiles = () => {
-    queueEvent(this.context, {
-      name: "collect-tiles",
-      start: () => {
-        const animateExit = this.context.score < 12;
-        const matched = matchBoard(this.context.board, animateExit);
-        if (matched) {
-          this.context.score += matched;
-          return animateExit ? ANIMATE_COLLECT_TIME : 0;
-        }
-      },
-      finish: () => {
-        if (!this.context.board.tiles.length) {
-          clearTimeline(this.context);
-          this.addNewTile();
-        }
-      },
-    });
+    const animateExit = this.context.score < 12;
+    const matched = matchBoard(this.context.board, animateExit);
+    DEBUG && console.log("collectTiles", matched, animateExit);
+    if (!matched) return;
+
+    this.context.score += matched;
+    const delay = animateExit ? ANIMATE_COLLECT_TIME : 0;
+
+    runTask(this.context.board, [
+      //
+      timeoutTask(() => {}, delay, "collect-delay"),
+    ]);
   };
 }

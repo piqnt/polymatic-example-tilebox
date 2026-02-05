@@ -16,7 +16,7 @@ const currentScorePin = {
   handleX: 0,
   handleY: 1,
   offsetY: -14,
-  alpha: 1
+  alpha: 1,
 };
 
 const maxScorePin = {
@@ -25,7 +25,7 @@ const maxScorePin = {
   handleX: 1,
   handleY: 1,
   offsetY: -14,
-  alpha: 0.3
+  alpha: 0.3,
 };
 
 export class Terminal extends Middleware<MainContext> {
@@ -37,7 +37,6 @@ export class Terminal extends Middleware<MainContext> {
   maxScore: Stage.Monotype;
 
   header: Stage.Node;
-  arrow: Stage.Node;
   logo: Stage.Node;
 
   tiles: Stage.Node;
@@ -99,16 +98,6 @@ export class Terminal extends Middleware<MainContext> {
       scale: 1.05,
     });
 
-    this.arrow = Stage.sprite("arrow");
-    this.arrow.appendTo(this.board);
-    this.arrow.pin({
-      alignX: 0.5,
-      alignY: 1.15,
-      handleX: 0.5,
-      handleY: 0.5,
-    });
-    this.arrow.hide();
-
     this.currentScore = Stage.monotype("digit");
     this.currentScore.appendTo(this.board);
     this.currentScore.pin(currentScorePin);
@@ -132,7 +121,7 @@ export class Terminal extends Middleware<MainContext> {
     if (this.context.maxScore) {
       this.maxScore.value(this.context.maxScore + "S");
     } else {
-      this.maxScore.value("S");
+      this.maxScore.hide()
     }
   };
 
@@ -206,27 +195,8 @@ export class Terminal extends Middleware<MainContext> {
 
   binder = Dataset.create<Cell | Tile>({
     key: (d) => d.key,
-  })
-    .addDriver(this.cellDriver)
-    .addDriver(this.tileDriver);
-
-  handleInstruct = (move: Index) => {
-    if (!move) {
-      this.arrow.hide().tween();
-      return;
-    }
-    const i = move.i;
-    const j = move.j;
-    this.arrow.show();
-    this.arrow.rotate(Math.atan2(j, i));
-    this.arrow.offset(-5 * i, -5 * j);
-    this.arrow
-      .tween({ duration: 500 })
-      .offset(5 * i, 5 * j)
-      .tween({ duration: 200 })
-      .offset(-5 * i, -5 * j)
-      .done(() => this.handleInstruct(move));
-  };
+    drivers: [this.cellDriver, this.tileDriver],
+  });
 
   handleMouseStart = (point: Stage.Vec2Value) => {
     if (this.context.gameover) return;

@@ -10,7 +10,6 @@ import { Loader } from "./Loader";
 import { DataStore } from "./DataStore";
 import type { Board, Cell, Tile } from "./Model";
 import { FrameLoop } from "./FrameLoop";
-import { TimelineManager, type TimelineEvent } from "./Timeline";
 
 export class MainContext {
   stage?: Stage.Root;
@@ -18,12 +17,11 @@ export class MainContext {
   score = 0;
   inserted = 0;
   gameover = false;
+  nextTileTimeout = 0;
 
   board: Board;
 
   maxScore = 0;
-
-  timeline: TimelineEvent[] = [];
 }
 
 export class Main extends Middleware<MainContext> {
@@ -31,7 +29,6 @@ export class Main extends Middleware<MainContext> {
     super();
     this.use(new Loader());
     this.use(new FrameLoop());
-    this.use(new TimelineManager());
     this.use(new DataStore());
     this.on("stage-ready", this.handleStageReady);
   }
