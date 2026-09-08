@@ -1,0 +1,61 @@
+/* The stage sizes its viewbox from the window, so unlike the other examples the
+   hud cannot work out where the board landed: runtime/BoardView publishes the
+   board's top-left and the size of one board unit, and App sets them on the
+   frame below. Every offset here is then in the board's own units, measured
+   from its top-left corner, exactly as the sprites were pinned. */
+
+.frame {
+  position: absolute;
+  width: calc(var(--u) * 128);
+  height: calc(var(--u) * 128);
+  pointer-events: none;
+  font-family: var(--tilebox-font);
+}
+
+.frame > * {
+  position: absolute;
+}
+
+/* the wordmark, set in the face media/logo.svg was lettered in */
+.title {
+  left: calc(var(--u) * 1);
+  top: calc(var(--u) * -80);
+  margin: 0;
+  font-size: calc(var(--u) * 35);
+  font-weight: 400;
+  line-height: 1;
+  color: #989898;
+  white-space: nowrap;
+  /* the sprite header tweened between full and 0.4, over about this long */
+  transition: opacity 1.5s ease;
+}
+
+/* dimmed while a game is running, full once the board fills up */
+.titleDim {
+  opacity: 0.4;
+}
+
+/* both scores sit on the line above the board, where the sprites did */
+.score,
+.best {
+  top: calc(var(--u) * -30);
+  font-size: calc(var(--u) * 20);
+  line-height: 1;
+  color: #f2efe9;
+  font-variant-numeric: tabular-nums;
+}
+
+.score {
+  left: calc(var(--u) * 6.4);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+}
+
+.best {
+  right: calc(var(--u) * 6.4);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+  opacity: 0.3;
+}

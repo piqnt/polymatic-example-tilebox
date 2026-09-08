@@ -3,8 +3,8 @@
 
 import { Middleware } from "polymatic";
 
-import { MainContext } from "./Main";
-import { NEXT_TILE_TIME, ANIMATE_COLLECT_TIME, WIDTH, HEIGHT } from "./Config";
+import { MainContext } from "../model";
+import { NEXT_TILE_TIME, ANIMATE_COLLECT_TIME, WIDTH, HEIGHT } from "../model";
 import {
   type Index,
   Tile,
@@ -17,8 +17,8 @@ import {
   randomEmptyCell,
   slideBoard,
   isGameover,
-} from "./Model";
-import { clearTimeline, runTask, stepTimeline, timeoutTask } from "./Timeline";
+} from "../model";
+import { clearTimeline, runTask, stepTimeline, timeoutTask } from "../model";
 import { type FrameLoopEvent } from "./FrameLoop";
 
 const DEBUG = false;

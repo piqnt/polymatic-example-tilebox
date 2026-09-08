@@ -4,7 +4,7 @@
 import store from "store";
 import { Middleware } from "polymatic";
 
-import { MainContext } from "./Main";
+import { MainContext } from "../model";
 
 const KEY = "tilebox-v1-max";
 

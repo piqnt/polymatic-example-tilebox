@@ -1,29 +1,21 @@
 // Copyright (c) Ali Shakiba
 // Licensed under the MIT License
 
-import * as Stage from "stage-js";
 import { Middleware } from "polymatic";
 
-import { Terminal } from "./Terminal";
+import { type MainContext } from "../model";
+import { BoardView } from "./BoardView";
 import { Gameplay } from "./Gameplay";
 import { Loader } from "./Loader";
 import { DataStore } from "./DataStore";
-import type { Board, Cell, Tile } from "./Model";
 import { FrameLoop } from "./FrameLoop";
+import { HudManager } from "./HudManager";
 
-export class MainContext {
-  stage?: Stage.Root;
-
-  score = 0;
-  inserted = 0;
-  gameover = false;
-  nextTileTimeout = 0;
-
-  board: Board;
-
-  maxScore = 0;
-}
-
+/**
+ * The runtime. It owns the board and the tiles on the stage; the scores, the
+ * title and the game-over card are the shell's (see shell/App), and the two
+ * meet at the signals on MainContext.
+ */
 export class Main extends Middleware<MainContext> {
   constructor() {
     super();
@@ -34,8 +26,10 @@ export class Main extends Middleware<MainContext> {
   }
 
   handleStageReady = () => {
-    this.use(new Terminal());
+    this.use(new BoardView());
     this.use(new Gameplay());
+    this.use(new HudManager());
+    this.context.ready.value = true;
     this.emit("main-start");
   };
 }

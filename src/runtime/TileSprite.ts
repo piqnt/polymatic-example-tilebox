@@ -4,7 +4,7 @@
 import { Memo } from "polymatic";
 import * as Stage from "stage-js";
 
-import { ANIMATE_COLLECT_TIME } from "./Config";
+import { ANIMATE_COLLECT_TIME } from "../model";
 
 export class TileSprite extends Stage.Sprite {
   __size: number;

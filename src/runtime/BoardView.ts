@@ -4,44 +4,19 @@
 import * as Stage from "stage-js";
 import { Dataset, Driver, Middleware } from "polymatic";
 
-import { HEIGHT, WIDTH } from "./Config";
-
-import { MainContext } from "./Main";
+import { HEIGHT, WIDTH, type MainContext, type Cell, type Tile, type Index } from "../model";
 import { TileSprite } from "./TileSprite";
-import { type Cell, type Tile, type Index } from "./Model";
 
-const currentScorePin = {
-  alignX: 0.05,
-  alignY: 0,
-  handleX: 0,
-  handleY: 1,
-  offsetY: -14,
-  alpha: 1,
-};
-
-const maxScorePin = {
-  alignX: 0.95,
-  alignY: 0,
-  handleX: 1,
-  handleY: 1,
-  offsetY: -14,
-  alpha: 0.3,
-};
-
-export class Terminal extends Middleware<MainContext> {
+/**
+ * The board: the cells and the tiles on the stage, plus the drag and key input
+ * that slides them. The scores, the title and the game-over card are the Preact
+ * hud now (shell/), fed by runtime/HudManager.
+ */
+export class BoardView extends Middleware<MainContext> {
   size = 32;
 
   board: Stage.Node;
-
-  currentScore: Stage.Monotype;
-  maxScore: Stage.Monotype;
-
-  header: Stage.Node;
-  logo: Stage.Node;
-
   tiles: Stage.Node;
-
-  lastMaxScore = -1;
 
   mouseX = 0;
   mouseY = 0;
@@ -50,8 +25,6 @@ export class Terminal extends Middleware<MainContext> {
   constructor() {
     super();
     this.on("stage-ready", this.handleActivate);
-    this.on("game-over", this.handleGameover);
-    this.on("game-start", this.handleStart);
     this.on("frame-render", this.handleFrameRender);
   }
 
@@ -60,7 +33,23 @@ export class Terminal extends Middleware<MainContext> {
     const w = viewport.width;
     const h = viewport.height;
     const r = viewport.ratio;
-    stage.viewbox(Math.max(w / r / 2, 200), Math.max(h / r / 2, 250));
+
+    // the viewbox follows the window rather than being fixed, so the hud cannot
+    // work out the board's place on screen in css - publish it instead
+    const boxWidth = Math.max(w / r / 2, 200);
+    const boxHeight = Math.max(h / r / 2, 250);
+    stage.viewbox(boxWidth, boxHeight);
+
+    const cssWidth = w / r;
+    const cssHeight = h / r;
+    // "in-pad" fits the viewbox inside the canvas and pads the rest
+    const unit = Math.min(cssWidth / boxWidth, cssHeight / boxHeight);
+    this.emit("board-layout", {
+      // the board is pinned centred, by the point 50% across and 20% down
+      left: cssWidth / 2 - 0.5 * WIDTH * this.size * unit,
+      top: cssHeight / 2 - 0.2 * HEIGHT * this.size * unit,
+      unit,
+    });
   };
 
   handleActivate = () => {
@@ -84,28 +73,6 @@ export class Terminal extends Middleware<MainContext> {
     this.tiles.appendTo(this.board);
     this.tiles.offset(this.size / 2, this.size / 2);
 
-    this.header = Stage.component();
-    this.header.appendTo(this.board);
-    this.header.pin({
-      width: WIDTH * this.size,
-    });
-
-    this.logo = Stage.sprite("logo");
-    this.logo.appendTo(this.header);
-    this.logo.pin({
-      offsetX: 1,
-      offsetY: -80,
-      scale: 1.05,
-    });
-
-    this.currentScore = Stage.monotype("digit");
-    this.currentScore.appendTo(this.board);
-    this.currentScore.pin(currentScorePin);
-
-    this.maxScore = Stage.monotype("digit");
-    this.maxScore.appendTo(this.board);
-    this.maxScore.pin(maxScorePin);
-
     this.board.on(Stage.POINTER_CLICK, () => {
       if (this.context.gameover) {
         this.emit("user-start");
@@ -117,45 +84,10 @@ export class Terminal extends Middleware<MainContext> {
     stage.on(Stage.POINTER_UP, this.handleMouseEnd);
 
     window.addEventListener("keydown", this.handleKeyDown);
-
-    if (this.context.maxScore) {
-      this.maxScore.value(this.context.maxScore + "S");
-    } else {
-      this.maxScore.hide()
-    }
-  };
-
-  handleStart = () => {
-    this.header.tween({ duration: 1000 }).pin("alpha", 0.4);
-    if (this.lastMaxScore > -1 && this.context.maxScore > this.lastMaxScore) {
-      // there is a new max
-
-      this.maxScore.tween(200).alpha(0).remove();
-      this.maxScore = this.currentScore;
-      this.maxScore.value(this.context.maxScore + "S");
-      this.maxScore.tween().pin(maxScorePin);
-
-      this.currentScore = Stage.monotype("digit");
-      this.currentScore.appendTo(this.board);
-      this.currentScore.pin(currentScorePin);
-      this.currentScore.value("0").pin(currentScorePin);
-    }
-
-    this.lastMaxScore = this.context.maxScore || 0;
-  };
-
-  handleGameover = () => {
-    this.header.tween({ duration: 2000 }).pin("alpha", 1);
-
-    if (this.context.score >= this.context.maxScore) {
-      this.currentScore.value(this.context.score + "S");
-      this.maxScore.value(this.lastMaxScore + "s");
-    }
   };
 
   handleFrameRender = () => {
     if (this.context.gameover) return;
-    this.currentScore.value(this.context.score);
     this.binder.data([...this.context.board.cells, ...this.context.board.tiles]);
   };
 
