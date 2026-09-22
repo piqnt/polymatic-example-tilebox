@@ -1,22 +1,26 @@
 // Copyright (c) Ali Shakiba
 // Licensed under the MIT License
 
-import * as Stage from "stage-js";
-import { Dataset, Driver, Middleware } from "polymatic";
+import { Container, Rectangle, type FederatedPointerEvent } from "pixi.js";
+import { Binder, Driver, Middleware } from "polymatic";
+import { TransitionManager } from "@piqnt/transition";
 
-import { HEIGHT, WIDTH, type MainContext, type Cell, type Tile, type Index } from "../model";
+import { HEIGHT, WIDTH, type MainContext, type Cell, type Tile } from "../model";
+import { type FrameLoopEvent } from "./FrameLoop";
 import { TileSprite } from "./TileSprite";
 
 /**
- * The board: the cells and the tiles on the stage, plus the drag and key input
+ * The board: the cells and the tiles on the canvas, plus the drag and key input
  * that slides them. The scores, the title and the game-over card are the Preact
- * hud now (shell/), fed by runtime/HudManager.
+ * hud (shell/), fed by runtime/HudManager.
  */
 export class BoardView extends Middleware<MainContext> {
   size = 32;
 
-  board: Stage.Node;
-  tiles: Stage.Node;
+  board: Container;
+  tiles: Container;
+
+  transitionManager = new TransitionManager();
 
   mouseX = 0;
   mouseY = 0;
@@ -24,28 +28,32 @@ export class BoardView extends Middleware<MainContext> {
 
   constructor() {
     super();
-    this.on("stage-ready", this.handleActivate);
+    this.on("pixi-ready", this.handleActivate);
+    this.on("deactivate", this.handleDeactivate);
     this.on("frame-render", this.handleFrameRender);
   }
 
-  handleViewport = (viewport: Stage.Viewport) => {
-    const stage = this.context.stage!;
-    const w = viewport.width;
-    const h = viewport.height;
-    const r = viewport.ratio;
+  /**
+   * The viewbox follows the window: half the css size, at least 200x250 units,
+   * fitted inside the screen and centered. The board is pinned by the point 50%
+   * across and 20% down, at the center of the screen.
+   */
+  handleViewport = () => {
+    const pixi = this.context.pixi!;
+    const scene = this.context.scene!;
 
-    // the viewbox follows the window rather than being fixed, so the hud cannot
-    // work out the board's place on screen in css - publish it instead
-    const boxWidth = Math.max(w / r / 2, 200);
-    const boxHeight = Math.max(h / r / 2, 250);
-    stage.viewbox(boxWidth, boxHeight);
+    const cssWidth = pixi.screen.width;
+    const cssHeight = pixi.screen.height;
 
-    const cssWidth = w / r;
-    const cssHeight = h / r;
-    // "in-pad" fits the viewbox inside the canvas and pads the rest
+    const boxWidth = Math.max(cssWidth / 2, 200);
+    const boxHeight = Math.max(cssHeight / 2, 250);
     const unit = Math.min(cssWidth / boxWidth, cssHeight / boxHeight);
+
+    scene.scale.set(unit);
+    scene.position.set(cssWidth / 2, cssHeight / 2);
+
+    // the hud cannot work out the board's place on screen in css - publish it instead
     this.emit("board-layout", {
-      // the board is pinned centred, by the point 50% across and 20% down
       left: cssWidth / 2 - 0.5 * WIDTH * this.size * unit,
       top: cssHeight / 2 - 0.2 * HEIGHT * this.size * unit,
       unit,
@@ -53,50 +61,64 @@ export class BoardView extends Middleware<MainContext> {
   };
 
   handleActivate = () => {
-    const stage = this.context.stage!;
+    const pixi = this.context.pixi!;
+    const scene = this.context.scene!;
 
-    stage.on("viewport", this.handleViewport);
+    const boardWidth = WIDTH * this.size;
+    const boardHeight = HEIGHT * this.size;
 
-    this.handleViewport(stage.viewport());
-
-    this.board = Stage.component();
-    this.board.appendTo(stage);
-    this.board.pin({
-      width: WIDTH * this.size,
-      height: HEIGHT * this.size,
-      align: 0.5,
-      handleY: 0.2,
-      handleX: 0.5,
-    });
-
-    this.tiles = Stage.component();
-    this.tiles.appendTo(this.board);
-    this.tiles.offset(this.size / 2, this.size / 2);
-
-    this.board.on(Stage.POINTER_CLICK, () => {
+    this.board = new Container();
+    this.board.position.set(-0.5 * boardWidth, -0.2 * boardHeight);
+    this.board.eventMode = "static";
+    this.board.hitArea = new Rectangle(0, 0, boardWidth, boardHeight);
+    this.board.on("pointertap", () => {
       if (this.context.gameover) {
         this.emit("user-start");
       }
     });
+    scene.addChild(this.board);
 
-    stage.on(Stage.POINTER_DOWN, this.handleMouseStart);
-    stage.on(Stage.POINTER_MOVE, this.handleMouseMove);
-    stage.on(Stage.POINTER_UP, this.handleMouseEnd);
+    // tiles are placed by their centers
+    this.tiles = new Container();
+    this.tiles.position.set(this.size / 2, this.size / 2);
+    this.board.addChild(this.tiles);
+
+    // slide gestures start anywhere on the screen
+    pixi.stage.eventMode = "static";
+    pixi.stage.hitArea = pixi.screen;
+    pixi.stage.on("pointerdown", this.handleMouseStart);
+    pixi.stage.on("pointermove", this.handleMouseMove);
+    pixi.stage.on("pointerup", this.handleMouseEnd);
+    pixi.stage.on("pointerupoutside", this.handleMouseEnd);
 
     window.addEventListener("keydown", this.handleKeyDown);
+
+    pixi.renderer.on("resize", this.handleViewport);
+    this.handleViewport();
   };
 
-  handleFrameRender = () => {
-    if (this.context.gameover) return;
-    this.binder.data([...this.context.board.cells, ...this.context.board.tiles]);
+  handleDeactivate = () => {
+    this.context.pixi?.renderer.off("resize", this.handleViewport);
+    window.removeEventListener("keydown", this.handleKeyDown);
+  };
+
+  handleFrameRender = (ev: FrameLoopEvent) => {
+    if (!this.board) return;
+    if (!this.context.gameover) {
+      this.binder.data([...this.context.board.cells, ...this.context.board.tiles]);
+    }
+    this.transitionManager.update(ev.dt);
+  };
+
+  createSprite = (texture: keyof typeof this.context.textures.tiles) => {
+    return new TileSprite(this.context.textures!.tiles[texture], this.size, (sprite) => this.transitionManager.select(sprite));
   };
 
   cellDriver = Driver.create<Cell, TileSprite>({
     filter: (d) => d.type === "cell",
     enter: (cell: Cell) => {
-      const ui = new TileSprite(this.size);
-      ui.texture("cell");
-      ui.appendTo(this.tiles);
+      const ui = this.createSprite("cell");
+      this.tiles.addChild(ui);
       ui.enter(cell.position);
       return ui;
     },
@@ -111,9 +133,8 @@ export class BoardView extends Middleware<MainContext> {
   tileDriver = Driver.create<Tile, TileSprite>({
     filter: (d) => d.type === "tile",
     enter: (tile: Tile) => {
-      const ui = new TileSprite(this.size);
-      ui.texture(tile.color || "");
-      ui.appendTo(this.tiles);
+      const ui = this.createSprite((tile.color || "") as keyof typeof this.context.textures.tiles);
+      this.tiles.addChild(ui);
       ui.enter(tile.position);
       return ui;
     },
@@ -125,22 +146,28 @@ export class BoardView extends Middleware<MainContext> {
     },
   });
 
-  binder = Dataset.create<Cell | Tile>({
+  binder = Binder.create<Cell | Tile>({
     key: (d) => d.key,
     drivers: [this.cellDriver, this.tileDriver],
   });
 
-  handleMouseStart = (point: Stage.Vec2Value) => {
+  toScene = (e: FederatedPointerEvent) => {
+    return this.context.scene!.toLocal(e.global);
+  };
+
+  handleMouseStart = (e: FederatedPointerEvent) => {
     if (this.context.gameover) return;
 
+    const point = this.toScene(e);
     this.mouseX = point.x;
     this.mouseY = point.y;
     this.mouseStarted = true;
   };
 
-  handleMouseMove = (point: Stage.Vec2Value) => {
+  handleMouseMove = (e: FederatedPointerEvent) => {
     if (!this.mouseStarted) return;
 
+    const point = this.toScene(e);
     const x = point.x - this.mouseX;
     const y = point.y - this.mouseY;
     const ax = Math.abs(x);
@@ -154,24 +181,24 @@ export class BoardView extends Middleware<MainContext> {
     }
   };
 
-  handleMouseEnd = (point: Stage.Vec2Value) => {
-    this.handleMouseMove(point);
+  handleMouseEnd = (e: FederatedPointerEvent) => {
+    this.handleMouseMove(e);
     this.mouseStarted = false;
   };
 
-  handleKeyDown = (ev) => {
+  handleKeyDown = (ev: KeyboardEvent) => {
     const key: number = ev.keyCode;
     if (this.context.gameover) {
       if (key == 13 || key == 32) {
         this.emit("user-start");
-        return false;
+        ev.preventDefault();
       }
     } else {
       const i = (key == 39 ? 1 : 0) - (key == 37 ? 1 : 0);
       const j = (key == 40 ? 1 : 0) - (key == 38 ? 1 : 0);
       if (i || j) {
         this.emit("user-slide", { i, j });
-        return false;
+        ev.preventDefault();
       }
     }
   };

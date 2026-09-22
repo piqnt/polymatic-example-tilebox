@@ -42,7 +42,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* stage-js mounts onto this by id (see Stage.mount in runtime/Loader) */
+    /* the pixi canvas, inserted by runtime/PixiManager */
     #stage {
       position: absolute;
       inset: 0;
@@ -64,7 +64,7 @@
 
 <body>
   <div id="board">
-    <canvas id="stage"></canvas>
+    <!-- the pixi canvas is inserted here by runtime/PixiManager, under the hud -->
     <div id="ui-root"></div>
   </div>
   <script type="module" src="./src/index.tsx"></script>

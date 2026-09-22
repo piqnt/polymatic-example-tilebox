@@ -1,4 +1,4 @@
-/* The stage sizes its viewbox from the window, so unlike the other examples the
+/* The board sizes its viewbox from the window, so unlike the other examples the
    hud cannot work out where the board landed: runtime/BoardView publishes the
    board's top-left and the size of one board unit, and App sets them on the
    frame below. Every offset here is then in the board's own units, measured

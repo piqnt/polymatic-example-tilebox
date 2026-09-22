@@ -24,12 +24,13 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "dependencies": {
+    "@piqnt/transition": "^0.0.1",
     "@preact/signals": "^2.10.1",
     "nanoid": "^5.1.6",
+    "pixi.js": "^8.21.0",
     "polymatic": "^0.0.12",
     "preact": "^10.29.8",
     "react-icons": "^5.7.0",
-    "stage-js": "^1.0.0-alpha.23",
     "store": "^2.0.12"
   }
 }

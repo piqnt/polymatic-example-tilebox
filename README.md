@@ -2,7 +2,7 @@
 
 Implemented using:
 - [Polymatic](https://github.com/piqnt/polymatic) framework
-- [Stage.js](https://github.com/piqnt/stage.js) rendering engine
+- [Pixi.js](https://pixijs.com/) rendering engine
 - [Preact](https://preactjs.com/) and [Preact Signals](https://github.com/preactjs/signals)
 
 [Play Live Demo](https://piqnt.github.io/polymatic-example-tilebox/)

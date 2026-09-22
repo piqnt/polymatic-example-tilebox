@@ -17,7 +17,7 @@ export class HudData {
   /**
    * Where the board sits, in css pixels, and how big one board unit is.
    *
-   * The other examples derive this in css, but they cannot here: this stage
+   * The other examples derive this in css, but they cannot here: this board
    * sizes its viewbox from the window (see runtime/BoardView), and css `calc`
    * cannot divide by a length, so the mapping has to come from the runtime.
    */

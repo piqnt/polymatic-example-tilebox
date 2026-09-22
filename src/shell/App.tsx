@@ -11,7 +11,7 @@ import styles from "./Shell.module.css";
 /**
  * The shell. It mounts before the runtime exists (see index.tsx), so every read
  * below is guarded: `runtime` fills in once the game has been activated, and
- * `ready` once the atlases are loaded and the stage is mounted.
+ * `ready` once the atlas is loaded and pixi is mounted.
  *
  * The frame is placed from the board's published rect rather than from css -
  * see model/Hud for why.

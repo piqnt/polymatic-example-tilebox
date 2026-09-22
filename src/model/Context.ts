@@ -1,8 +1,10 @@
 // Copyright (c) Ali Shakiba
 // Licensed under the MIT License
 
-import type * as Stage from "stage-js";
+import { type Application, type Container } from "pixi.js";
 import { type Signal, signal } from "@preact/signals";
+
+import { type Textures } from "../runtime/PixiManager";
 
 import { type Board } from "./Model";
 import { HudData } from "./Hud";
@@ -10,7 +12,7 @@ import { HudData } from "./Hud";
 /**
  * Global context, shared between the runtime and the shell.
  *
- * The plain fields belong to the runtime - the board, the score, the stage -
+ * The plain fields belong to the runtime - the board, the score, the pixi app -
  * and are written many times a frame. The signals are the bridge: the runtime
  * writes them, the shell subscribes by reading `.value` as it renders. What the
  * hud shows is mirrored onto `hud` once a frame (runtime/HudManager) rather
@@ -18,7 +20,10 @@ import { HudData } from "./Hud";
  * re-renders nothing.
  */
 export class MainContext {
-  stage?: Stage.Root;
+  // the pixi application, the scene container and the textures, set by runtime/PixiManager
+  pixi?: Application;
+  scene?: Container;
+  textures?: Textures;
 
   score = 0;
   inserted = 0;
@@ -31,7 +36,7 @@ export class MainContext {
 
   // --- shell facing state ---
 
-  /** atlases loaded and the stage mounted; the shell draws nothing before this */
+  /** atlas loaded and pixi mounted; the shell draws nothing before this */
   ready: Signal<boolean>;
 
   hud: HudData;
